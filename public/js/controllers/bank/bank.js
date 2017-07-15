@@ -5,7 +5,6 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
   $scope.banks = [];
   $scope.show = true;
 
-  toastr.success('Banks loaded successfully!', 'Success!');
 
   $scope.open_error = function (v) {
 

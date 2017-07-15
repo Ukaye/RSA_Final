@@ -141,7 +141,7 @@
                                                             {{user.Phone}}
                                                         </td>
                                                         <td class="text-center">
-                                                            <a href="#popplan" class="btn btn-primary btn-md">
+                                                            <a href="#popplan" class="button button-primary button-md">
                                                                                         View
                                                            </a>
                                                         </td>
@@ -154,10 +154,13 @@
                                 </div>
                             </div>
                             <div id="popplan" class="overlay">
+
+                            <a href="#"><button type="button button-danger text-center" class="close" ><span aria-hidden="true">×</span></button> </a> 
+
                                 <div class="popup" style="padding:40px; margin-top:15px; width:60%; ">
 
                                     <div class="">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" ng-if="show">
                                             <table class="table table-lightborder">
 
                                                 <thead>
@@ -186,72 +189,45 @@
 
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody  ng-repeat ="plan in plans">
                                                     <tr>
-                                                        <td class="nowrap">
-                                                            House Rent
+                                                        <td class="nowrap" ng-bind ="plan.name">
+                                                           
                                                         </td>
-                                                        <td>
-                                                            N 55,000
+                                                        <td ng-bind ="plan.Saved">
+                                                         
                                                         </td>
-                                                        <td>
-                                                            N 555,000
+                                                        <td ng-bind ="plan.target">
+                                                        
                                                         </td>
-                                                        <td>
-                                                            12 months
+                                                        <td ng-bind ="plan.duration">
+                                                          
                                                         </td>
-                                                        <td class="text-right">
-                                                            2nd Of Every Month
+                                                        <td class="text-right" ng-bind ="plan.deduction_day">
+                                                           
                                                         </td>
-                                                        <td class="nowrap">
-                                                            N 55,000
+                                                        <td class="nowrap" ng-bind ="plan.amount">
+                                                          
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="nowrap">
-                                                            Doll House
-                                                        </td>
-                                                        <td>
-                                                            N 55,000
-                                                        </td>
-                                                        <td>
-                                                            N 555,000
-                                                        </td>
-                                                        <td>
-                                                            12 months
-                                                        </td>
-                                                        <td class="text-right">
-                                                            2nd Of Every Month
-                                                        </td>
-                                                        <td class="nowrap">
-                                                            N 55,000
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="nowrap">
-                                                            Car Rent
-                                                        </td>
-                                                        <td>
-                                                            N 55,000
-                                                        </td>
-                                                        <td>
-                                                            N 555,000
-                                                        </td>
-                                                        <td>
-                                                            12 months
-                                                        </td>
-                                                        <td class="text-right">
-                                                            2nd Of Every Month
-                                                        </td>
-                                                        <td class="nowrap">
-                                                            N 55,000
-                                                        </td>
-                                                    </tr>
+                                                    
                                                 </tbody>
                                             </table>
 
                                         </div>
-                                        <a href="#" class="btn btn-danger pull-right">Close</a>
+
+                                           <div ng-if = "!show" class="text-center"   >
+
+                                     <img height="100px" width="100px" src="/img/ring.gif">
+                 
+                                           </div>
+
+                                            <div ng-if = "!plans" class="text-center"   >
+
+                                              <h2>No Active Plan</h2>
+                 
+                                           </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -263,8 +239,8 @@
                                     <div class="content padd-all">
                                         <h4 class="text-center mar-b">Are You Sure You Want to Log Out !</h4>
 
-                                        <a class="btn btn-primary btn-block" href="#"> NO </a>
-                                        <a class="btn btn-danger btn-block" href="/logout"> Yes </a>
+                                        <a class="button button-primary button-block" href="#"> NO </a>
+                                        <a class="button button-danger button-block" href="/logout"> Yes </a>
                                     </div>
                                 </div>
                             </div>

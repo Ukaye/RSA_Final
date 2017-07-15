@@ -2,6 +2,7 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
 
 
     var EndPoint = "/";
+    $scope.show = true;
 
     var Bank = function () {
 
@@ -119,7 +120,7 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
 
 
                 console.log(Data);
-                $scope.vsavers = Data.value
+                $scope.vsavers = Data.value;
 
             }
             )

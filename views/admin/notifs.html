@@ -142,12 +142,12 @@
                                     {{withdraw.Amount}}
                                  </td>
                                  <td class="text-center">
-                                    <a href="#popplan" class="btn btn-primary btn-md">
+                                    <a href="#popplan" class="button button-primary button-md">
                                     View
                                     </a>
                                  </td>
                                  <td class="text-center">
-                                    <a href="#pop2" class="btn btn-primary btn-md">
+                                    <a href="#pop2" class="button button-primary button-md">
                                     Action
                                     </a>
                                  </td>
@@ -182,46 +182,49 @@
                                  <th>
                                     Fullname
                                  </th>
-                                 <!--   <th>
+                                   <th>
                                     Email address
-                                    </th> -->
+                                    </th>
                                  <th>
                                     Phone number
                                  </th>
                                  <th>
                                     Requested Amount
                                  </th>
-                                 <th class="text-center">
+                                <!--  <th class="text-center">
                                     View Transaction History
-                                 </th>
+                                 </th> -->
                                  <th class="text-center">
                                     Action
                                  </th>
                               </tr>
                            </thead>
-                           <tbody>
+                           <tbody ng-repeat = "loan in loans">
                               <tr>
-                                 <td class="nowrap">
-                                    Sade Femi
+                                 <td class="nowrap" ng-bind="loan.name">
+                                    
                                  </td>
-                                 <!--  <td>
-                                    femisade98@gmail.com
-                                    </td> -->
-                                 <td>
-                                    0802 008 3900
+                                  <td ng-bind="loan.email">
+                                   
+                                    </td>
+                                 <td ng-bind="loan.phone">
+                                    
                                  </td>
-                                 <td>
-                                    N 35,900
+                                 <td ng-bind="amount">
+                                  
                                  </td>
-                                 <td class="text-center">
-                                    <a href="#popplan" class="btn btn-primary btn-md">
+                               <!--   <td class="text-center">
+                                    <a href="#popplan" class="button button-primary button-md">
                                     View
                                     </a>
-                                 </td>
+                                 </td> -->
                                  <td class="text-center">
-                                    <a href="#pop2" class="btn btn-primary btn-md">
-                                    Action
-                                    </a>
+                                    <button  class="button button-primary button-md">
+                                    Approve
+                                    </button>
+                                    <button  class="button button-danger button-md">
+                                    Decline
+                                    </button>
                                  </td>
                               </tr>
                            </tbody>
@@ -235,8 +238,8 @@
             <div class="popup">
                <div class="content padd-all">
                   <h4 class="text-center mar-b">Are You Sure You Want to Log Out !</h4>
-                  <a class="btn btn-primary btn-block" href="#"> NO </a>
-                  <a class="btn btn-danger btn-block" href="/logout"> Yes </a>
+                  <a class="button button-primary button-block" href="#"> NO </a>
+                  <a class="button button-danger button-block" href="/logout"> Yes </a>
                </div>
             </div>
          </div>

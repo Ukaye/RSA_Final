@@ -232,7 +232,7 @@ module.exports = function (app) {
 
     app.get('/users', function (req, res) {
 
-        User.find({}, function (err, user_obj) {
+        User.find({access:0}, function (err, user_obj) {
             if (err) throw (err);
             return res.send({ status: true, Data: user_obj });
 
