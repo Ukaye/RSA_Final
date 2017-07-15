@@ -1,0 +1,44 @@
+{
+  "name": "RSA",
+  "version": "1.0.0",
+  "description": "finance life technology",
+  "main": "app.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "keywords": [
+    "financer",
+    "savings",
+    "investment",
+    "collaboration"
+  ],
+  "author": "Natterbase",
+  "license": "MIT",
+  "dependencies": {
+    "angular-chart.js": "^1.1.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "chart": "^0.1.2",
+    "connect-flash": "latest",
+    "cookie-parser": "latest",
+    "cors": "^2.7.1",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "express3-handlebars": "latest",
+    "flutterwave": "^2.2.4",
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.9.9",
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.8.2",
+    "multer": "^0.1.8",
+    "nodemailer": "latest",
+    "nodemailer-express-handlebars": "latest",
+    "nodemailer-smtp-transport": "latest",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "request": "^2.78.0",
+    "rte-node": "^2.3.3",
+    "sha256": "^0.2.0"
+  }
+}

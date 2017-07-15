@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Riby Dashboard</title>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="template language" name="keywords">
+    <meta content="NatterBase" name="author">
+    <meta content="NatterBase" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="../img/riby-favicon.png" sizes="32x32" type="image/png" rel="icon">
+    <link href="../img/riby-favicon.png" sizes="16x16" type="image/png" rel="icon">
+   
+
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+    <link href="/https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <script src="../../public/js/Angular/angular.min.js"></script>
+    <!-- App script-->
+    <script src="../../public/js/Angular/app.js"></script>
+    <script src="../../public/js/Angular/ui-bootstrap-tpls-1.1.0.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+    <script src="../../public/js/Angular/angular-animate.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- controller script-->
+  
+
+</head>
+
+<body>
+    <div class="all-wrapper">
+        <div class="layout-w">
+            <div class="menu-w menu-activated-on-click">
+                <div class="logo-w">
+                    <a class="logo" href="../index.html"><img src="../img/riby-logo.svg"></a>
+                    <div class="mobile-menu-trigger">
+                        <div class="os-icon os-icon-hamburger-menu-1"></div>
+                    </div>
+                </div>
+                <div class="menu-and-user">
+                    <div class="logged-user-w">
+                        <div class="avatar-w">
+                            <img alt="" src="../img/ayo.png">
+                        </div>
+                        <div class="logged-user-info-w">
+                            <div class="logged-user-name">
+                                Ayo Akoduba
+                            </div>
+                            <div class="logged-user-role">
+                                Admin
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="main-menu">
+                        <li>
+                            <a href="/admin">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-user-male-circle"></div>
+                                </div>
+                                <span>Savers</span></a>
+                        </li>
+                        <li>
+                            <a href="/admin/notifs">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-newspaper"></div>
+                                </div>
+                                <span>Notifications </span>
+                                <b class="notifs-label">4</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/history">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-text-input"></div>
+                                </div>
+                                <span>Transaction History</span></a>
+                        </li>
+                        <li>
+                            <a href="/admin/settings">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-pencil-2"></div>
+                                </div>
+                                <span>Settings</span></a>
+                        </li>
+                        <li>
+                            <a href="/login">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-user-male-circle"></div>
+                                </div>
+                                <span>Log Out</span></a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="content-w pad-all-well">
+
+
+                <div class="content-i">
+                    <div class="content-box">
+                        <div class="row">
+
+
+                            <div class="col-sm-12">
+                                <div class="element-wrapper">
+                                    <h6 class="element-header">
+                                        Loan Requests
+                                    </h6>
+                                    <div class="element-box">
+                                        <div><label>Show entries</label><select class="form-control input-sm col-md-4"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>                                            </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-lightborder">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Fullname
+
+                                                        </th>
+                                                        <th>
+                                                            Email address
+                                                        </th>
+                                                        <th>
+                                                            Phone number
+                                                        </th>
+                                                        <th>
+                                                            Requested Amount
+                                                        </th>
+                                                        <th class="text-center">
+                                                            View Transaction History
+                                                        </th>
+                                                        <th class="text-center">
+                                                            Action
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="nowrap">
+                                                            Sade Femi
+                                                        </td>
+                                                        <td>
+                                                            femisade98@gmail.com
+                                                        </td>
+                                                        <td>
+                                                            0802 008 3900
+                                                        </td>
+                                                        <td>
+                                                            N 35,900
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <a href="#popplan" class="btn btn-primary btn-md">
+View
+                                                           </a>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <a href="#pop2" class="btn btn-primary btn-md">
+Action
+                                                           </a>
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="popplan" class="overlay">
+                                <div class="popup" style="padding:40px; margin-top:30px; width:60%; ">
+
+                                    <div class="">
+                                        <div class="element-wrapper">
+                                            <h6 class="element-header">
+                                                Transaction History
+                                            </h6>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-lightborder">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                Purpose
+                                                            </th>
+                                                            <th>
+                                                                Payment Method
+                                                            </th>
+                                                            <th class="text-center">
+                                                                Status
+                                                            </th>
+                                                            <th class="text-right">
+                                                                Amounts Total (naira)
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="nowrap">
+                                                                Baby Savings Plan
+                                                            </td>
+                                                            <td>
+                                                                <img src="../img/mastercard.svg" alt="mastercard" style=" height: 33px;">
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                N 354,570
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="nowrap">
+                                                                Expense Account withdraw
+                                                            </td>
+                                                            <td>
+                                                                <img src="../img/paystack.svg" alt="paystack" style=" height: 15px;">
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="status-pill red" data-title="Cancelled" data-toggle="tooltip"></div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                N 94,000
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <a href="#" class="btn btn-danger pull-right">Close</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pop2" class="overlay">
+                                <div class="popup">
+
+                                    <div class="content padd-all">
+
+                                        <a class="btn btn-primary btn-lg btn-block" href="#act1"> Disburse </a>
+                                        <a class="btn btn-danger btn-lg btn-block" href="#act2"> Deny request 
+ </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="act1" class="overlay">
+                                <div class="popup">
+                                    <div class="col-md-4 push-md-4 mar-b">
+                                        <img src="../icon/success-icon-xhdpi.png" class="img-responsive center-block" />
+                                    </div>
+                                    <div class="content padd-all">
+                                        <h4 class="text-center mar-b">Request Approved Successfully</h4>
+                                        <a class="btn btn-primary btn-block" href="#">Continue</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="act2" class="overlay">
+                                <div class="popup">
+                                    <div class="col-md-4 push-md-4 mar-b">
+                                        <img src="../icon/failure-icon-xhdpi.png" class="img-responsive center-block" />
+                                    </div>
+                                    <div class="content padd-all">
+                                        <h4 class="text-center mar-b">Denied Successfully</h4>
+                                        <a class="btn btn-primary btn-block" href="#">Continue</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="logout" class="overlay">
+                                <div class="popup">
+
+                                    <div class="content padd-all">
+                                        <h4 class="text-center mar-b">Are You Sure You Want to Log Out !</h4>
+
+                                        <a class="btn btn-primary btn-block" href="#"> NO </a>
+                                        <a class="btn btn-danger btn-block" href="/logout"> Yes </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                       <script src="/js/Angular/angular.min.js"></script>
+                        <!-- App script-->
+                        <script src="/js/Angular/app.js"></script>
+                        <script src="/js/Angular/ui-bootstrap-tpls-1.1.0.js" type="text/javascript"></script>
+                        <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+                        <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+                        <script src="/js/Angular/angular-animate.js" type="text/javascript"></script>
+                        <!-- controller script-->
+                        <script src="/js/controllers/admin/admin.js"></script>
+</body>
+
+</html>

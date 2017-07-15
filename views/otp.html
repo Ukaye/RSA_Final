@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html  ng-app = "RSA"  ng-controller = "BVN">
+
+<head>
+    <title>Account - Riby</title>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="template language" name="keywords">
+    <meta content="NatterBase" name="author">
+    <meta content="NatterBase" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="/img/riby-favicon.png" sizes="32x32" type="image/png" rel="icon">
+    <link href="/img/riby-favicon.png" sizes="16x16" type="image/png" rel="icon">
+    <link href="/css/bootstrap.min.css" rel="stylesheet"> 
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+
+    
+   <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+</head>
+
+<body class="auth-wrapper">
+    <div class="all-wrapper with-pattern">
+        <div class="auth-box-w">
+            <div class="logo-w">
+                <a href="/"><img alt="" src="/img/riby-logo.svg" height="60px"></a>
+            </div>
+         
+            <div>
+                
+                <p class="text-center" style="color: red" ng-bind="error"></p>
+                <p class="text-center" style="color: green" ng-bind="message"></p>
+              </div>
+         
+               
+         <form>
+
+            <div class="pad-all-well">
+             
+                <div class="form-class">
+                    <label for="">Enter OTP</label>
+                    <input class="form-con" placeholder="Enter your BVM" type="text" ng-model="otp">
+                   
+                </div>
+
+                <!-- <div class="buttons-w"> -->
+                
+                    
+                       
+                 <button ng-click="Validate(bvn)" class="button button-primary button-block" >Validate </button> 
+
+                
+                   
+                </div>
+            </div>
+
+        </form>
+
+
+        </div>
+    </div>
+ 
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+	<div class="col-md-4 push-md-4 mar-b">
+    	<img src="/icon/success-icon-xhdpi.png" class="img-responsive center-block" />
+	</div>
+		<div class="content padd-all">
+            <h4 class="text-center mar-b">BVN Succesfully Verified</h4>
+			 <a class="button button-primary button-block" href="account.html">Continue</a> 
+		</div>
+	</div>
+</div>
+
+<div id="popup2" class="overlay">
+	<div class="popup">
+	<div class="col-md-4 push-md-4 mar-b">
+    	<img src="/icon/failure-icon-xhdpi.png" class="img-responsive center-block" />
+	</div>
+		<div class="content padd-all">
+            <h4 class="text-center mar-b">BVN Verification Error</h4>
+			 <a class="button button-primary button-block" href="#">Try Again</a> 
+		</div>
+	</div>
+</div>
+
+
+ <script src="/js/Angular/angular.min.js"></script>
+    <!-- App script-->
+    <script src="/js/Angular/app.js"></script>
+    <script src="/js/Angular/ui-bootstrap-tpls-1.1.0.js" type="text/javascript"></script>
+    <script src="/js/Angular/angular-animate.js" type="text/javascript"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+<link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+    <!-- controller script-->
+    <script src="/js/controllers/bvn/BVN.js"></script>
+    <script src="/js/controllers/save/plan.js"></script>
+
+</body>
+
+</html>

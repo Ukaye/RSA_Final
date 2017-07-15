@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html  ng-app = "RSA"  ng-controller = "Bank">
+   <head>
+      <title>Riby Dashboard</title>
+      <meta charset="utf-8">
+      <meta content="ie=edge" http-equiv="x-ua-compatible">
+      <meta content="template language" name="keywords">
+      <meta content="NatterBase" name="author">
+      <meta content="NatterBase" name="description">
+      <meta content="width=device-width, initial-scale=1" name="viewport">
+      <link href="img/riby-favicon.png" sizes="32x32" type="image/png" rel="icon">
+      <link href="img/riby-favicon.png" sizes="16x16" type="image/png" rel="icon">
+      <link href="css/main.css" rel="stylesheet">
+      <link href="css/custom.css" rel="stylesheet">
+      <link href="/css/bootstrap.min.css" rel="stylesheet">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+   </head>
+   <body>
+      <div class="all-wrapper">
+      <div class="layout-w">
+         <div class="menu-w menu-activated-on-click">
+            <div class="logo-w">
+               <a class="logo" href="index.html"><img src="img/riby-logo.svg"></a>
+               <div class="mobile-menu-trigger">
+                  <div class="os-icon os-icon-hamburger-menu-1"></div>
+               </div>
+            </div>
+            <div class="menu-and-user">
+               <div class="logged-user-w">
+                  <div class="avatar-w">
+                     <img alt="" src="img/ayo.png">
+                  </div>
+                  <div class="logged-user-info-w">
+                     <div class="logged-user-name">
+                       <%= firstname %>  <%= lastname %> 
+                     </div>
+                     <div class="logged-user-role">
+                        welcome
+                     </div>
+                  </div>
+               </div>
+               <ul class="main-menu">
+                  <li>
+                     <a href="/dashboard">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-window-content"></div>
+                        </div>
+                        <span>Dashboard</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/allplans">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-basic-2-259-calendar"></div>
+                        </div>
+                        <span>Savings Plans</span>
+                     </a>
+                  </li>
+                  <!--  <li>
+                     <a href="/wallet">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-wallet-loaded"></div>
+                        </div>
+                        <span>E-wallet</span>
+                     </a>
+                     </li> -->
+                  <li id="sub" class="">
+                        <a>
+                            <div class="icon-w">
+                                <div class="os-icon os-icon-wallet-loaded"></div>
+                            </div>
+                            <span>Transactions</span></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="/bank" class="sub-menu-dot">
+
+                                    <i class="fa fa-circle-o"></i>&nbsp; Bank Account</a>
+                            </li>
+                            <li>
+                                <a href="/wallet" class="sub-menu-dot">
+
+                                    <i class="fa fa-circle-o"></i>&nbsp; E-wallet</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                  <li>
+                     <a href="/settings">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-pencil-2"></div>
+                        </div>
+                        <span>Settings</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/logout">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-newspaper"></div>
+                        </div>
+                        <span>Logout</span>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="content-w">
+            <ul class="breadcrumb">
+               <li class="breadcrumb-item">
+                  <a href="index.html">Home</a>
+               </li>
+               <li class="breadcrumb-item">
+                  <a href="#">E-wallet</a>
+               </li>
+            </ul>
+            <div class="content-i">
+               <div class="content-box">
+                  <div class="row">
+                     <div class="col-md-4 col-sm-12">
+                        <div class="element-wrapper">
+                           <h6 class="element-header">
+                              Add Bank / Card
+                           </h6>
+                           <div class="element-box">
+                              <ul class="nav nav-tabs">
+                                 <li class="active column-sm-6 bank-tab"><a data-toggle="tab"  href="#bank">BANK</a></li>
+                                 <li class="column-sm-6"><a data-toggle="tab" data-target="#card">CARD</a></li>
+                              </ul>
+                              <div class="pad-nil">
+                                 <div class="tab-content">
+                                    <div id="bank" class="tab-pane fade in active">
+                                       <form ng-if="!account_name">
+                                          <div class="form-class">
+                                             <label for="" class="form-head"> Account Number</label>
+                                             <input class="form-con" placeholder="Enter Account Number" type="text" ng-model ="Form.account_number">
+                                          </div>
+                                          <div class="form-class">
+                                             <label for="" class="form-head">Select Bank</label>
+                                             
+                                             <select style=" padding-left:40px;" list="banks" class="form-con" ng-model="Form.bank " >
+                                                <option ng-repeat="bank in nigbanks" value="{{bank}}" ng-bind="bank.name"></option>
+                                             </select>
+                                          </div>
+                                          <div class="buttons-w">
+                                             <div ng-if = "!show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
+                                             <button  ng-if="show" ng-click="Bank(Form)" class="button button-primary button-block">Add Account</button> 
+                                          </div>
+                                       </form>
+                                       <div ng-if="account_name">
+                                          <b>your account name is</b>
+                                          <h3 ng-bind="account_name"></h3>
+                                          <div ng-if = "!show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
+                                          <button ng-if="show" ng-click="confirm(account_number, banks.length - 1)" class="button button-primary">Comfirm</button> 
+                                       </div>
+                                    </div>
+                                    <div id="card" class="tab-pane fade">
+                                       <div class="form-group">
+                                          <label for="" class="form-head"> Card Number</label>
+                                          <input class="form-con" placeholder="Enter Card Number" ng-model ="Form.no">
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="" class="form-head"> Expiry Date</label>
+                                       
+                                           <div class="row">
+                                              <div  class="column-sm-6">
+                                                 <select list="exp" class="quarter form-con" ng-model="Form.year">
+                                                    <option selected>YY</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                 </select>
+                                              </div>
+                                              <div  class="column-sm-6">
+                                                 <select list="exp" class="quarter form-con" ng-model="Form.month">
+                                                    <option selected>MM</option>
+                                                    <option value="01">January</option>
+                                                    <option value="02">February</option>
+                                                    <option value="03">March</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">May</option>
+                                                    <option value="06">June</option>
+                                                    <option value="07">July</option>
+                                                    <option value="08">August</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                 </select>
+                                              </div>
+                                           </div>
+                                        </div>
+                                       <div class="spacer"></div>
+                                       <div class="form-group">
+                                          <label for="" class="form-head"> CVV</label>
+                                          <input class="form-con" placeholder="Enter CVV" type="text" ng-model="Form.cvv">
+                                       </div>
+                                       <div class="buttons-w">
+                                           <div ng-if = "!show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
+                                          <button ng-if = "show" class="button button-primary button-block" ng-click="addcard(Form)" >Add Card</button>  
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-8 col-sm-12">
+                        <div class="element-wrapper">
+                           <h6 class="element-header">
+                              All Banks
+                           </h6>
+                           <div class="element-box">
+                              <div class="table-responsive">
+                                 <table class="table table-lightborder">
+                                    <thead>
+                                       <tr>
+                                          <th>
+                                             Account Name
+                                          </th>
+                                          <th>
+                                             Account Number
+                                          </th>
+                                          <th>
+                                             Bank Name
+                                          </th>
+                                          <th class="text-center">
+                                             Status
+                                          </th>
+                                          <th class="text-center">
+                                             Action
+                                          </th>
+                                       </tr>
+                                    </thead>
+                                    <tbody ng-repeat="bank in banks">
+                                       <tr>
+                                          <td class="nowrap">
+                                             <span ng-bind ="bank.account_name"></span>
+                                          </td>
+                                          <td class="nowrap">
+                                             <p ng-bind="bank.account_number"></p>
+                                          </td>
+                                          <td>
+                                             <b ng-bind="bank.bank_name"></b>
+                                          </td>
+                                          <td class="text-center">
+                                             <div ng-if="bank.status == 2"  class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
+                                             <div ng-if="bank.status == 1"  class="status-pill red" data-title="Complete" data-toggle="tooltip"></div>
+                                          </td>
+                                          <td class="text-center">
+                                             <div ng-if = "!show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
+                                             <button ng-if="bank.status == 2 && show" ng-click = "remove(bank.account_number,$index)" type="button" class="button button-md button-danger button-block" >
+                                             Remove
+                                             </button>
+                                             <button ng-if="bank.status == 1 && show" ng-click = "confirm(bank.account_number, $index)" type="button" class="button button-md button-danger button-block" >
+                                             Comfirm
+                                             </button>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="column-sm-12">
+                        <div class="element-wrapper">
+                           <h6 class="element-header">
+                              Transaction History
+                           </h6>
+                           <div class="element-box">
+                              <div class="table-responsive">
+                                 <table class="table table-lightborder">
+                                    <thead>
+                                       <tr>
+                                          <th>
+                                             Bank
+                                          </th>
+                                          <th>
+                                             Event
+                                          </th>
+                                          <th>
+                                             Type
+                                          </th>
+                                          <th>
+                                             Date
+                                          </th>
+                                       </tr>
+                                    </thead>
+                                    <tbody ng-repeat = "transaction in history">
+                                       <tr>
+                                          <td>
+                                             <b ng-bind="transaction.bank_name"></b>
+                                          </td>
+                                          <td>
+                                             <b ng-bind="transaction.transaction"></b>
+                                          </td>
+                                          <td >
+                                             <div ng-if= "transaction.type == 1" class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
+                                             <div ng-if= "transaction.type == 2" class="status-pill red" data-title="Complete" data-toggle="tooltip"></div>
+                                          </td>
+                                          <td>
+                                             <b ng-bind="transaction.created_time"></b> 
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Display the countdown timer in an element -->
+      </div>
+      <div id="popup1" class="overlay">
+         <div class="popup">
+            <div class="column-md-4 push-md-4 mar-b">
+               <img src="icon/success-icon-xhdpi.png" class="img-responsive center-block" />
+            </div>
+            <div class="content padd-all">
+               <h4 class="text-center mar-b">Account Details Added Successfully</h4>
+               <a class="button button-primary button-block" href="#">Continue</a> 
+            </div>
+         </div>
+      </div>
+      <script src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script>
+         sub = document.getElementById("sub");
+         sub.className = "has-sub-menu";
+         
+         sub.onclick = function () {
+          
+             var subclasses = sub.className;
+             if(subclasses == "has-sub-menu"){
+             sub.className = "has-sub-menu active";
+             console.log("sub active");
+         }else if(subclasses == "has-sub-menu active"){
+         sub.className = "has-sub-menu";
+         
+         }
+         }
+                                 
+      </script>
+   
+      <script src="/js/Angular/angular.min.js"></script>
+      <!-- App script-->
+      <script src="/js/Angular/app.js"></script>
+      <script src="/js/Angular/ui-bootstrap-tpls-1.1.0.js" type="text/javascript"></script>
+      <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+      <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+      <script src="/js/Angular/angular-animate.js" type="text/javascript"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!-- controller script-->
+      <script src="/js/controllers/bank/bank.js"></script>
+   </body>
+</html>

@@ -1,0 +1,489 @@
+* {
+    font-family: '"Proxima Nova W01", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+.notifs-label{
+    border-radius: 5px;
+    background-color: red;
+    color: #fff;
+    max-height: 20px;
+    font-weight: bolder;
+    padding: 0 5px;
+}
+#myProgress {
+  width: 100%;
+  background-color: #f2f4f8;
+}
+.bankformimg{
+    position: relative;
+    left: -80px;
+    width: 30px;
+    top: 36px;
+}
+.bankformimg-sm {
+    position: relative;
+    left: -80px;
+    width: 10px;
+    top: 6px;
+}
+#myBar {
+
+  height: 5px;
+  background-color: rgba(0,0,0,.5);
+}
+ .mar-b{
+     margin-bottom: 20px;
+ }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #0C223D;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #0C223D;
+}
+.popup .close:hover {
+  color: #0C223D;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+
+
+.pad-all-well{
+            padding: 0px 2rem;
+        }
+        .pad-left{
+
+            padding-left: 20px;
+        }
+        .pad-left-md{
+
+            padding-left: 35px;
+        }
+        .pad-left-well{
+
+            padding-left: 50px;
+        }
+        .pad-hor{
+          padding-right: 20px;
+            padding-left: 20px;
+        }
+        .pad-all{
+            padding: 20px;
+        }
+
+        
+        body {
+            background: #ffffff!important;
+            padding:0px;
+        }
+
+        .menu-w .logo-w img {
+            width: 100px;
+        }
+
+        .invoice-logo-w {
+            width: 100px;
+        }
+
+        .menu-w ul.main-menu > li .icon-w {
+            color: #0C223D;
+        }
+    
+.main-menu > ul {
+    font-family:'Work Sans', sans-serif!important;
+}
+
+.element-wrapper .element-header:after {
+    background-color: #e32525;
+}
+
+.auth-box-w .auth-header:after {
+    background-color: #e32525;
+}
+
+.auth-box-w.wider {
+    max-width: 100%;
+    padding: 2rem;
+}
+
+.auth-box-w form {
+    padding: 0px;
+}
+
+/* FORMS AND BUTTONS */
+
+.button-primary,
+.all-wrapper .fc-button.fc-state-active {
+    color: #fff;
+    background-color: #0c223d;
+    border-color: #0c223d;
+    border-radius: 0px;
+}
+
+.button{
+    margin: 0px;
+    padding-left:2em;
+    padding-right:2em;
+}
+
+.button-primary-x{
+    margin: 0px 4px;
+    padding-left:0.8em;
+    padding-right:0.8em;
+    background-color: #e32525;
+    color:white;
+    border-radius:0px;
+}
+
+.button-primary-x:hover{
+    background-color: #22364e;
+    color:white;
+    transition:ease-in 0.3s;
+}
+
+.button-md{
+    padding:0.8em !important;
+}
+
+.btn-popup2{
+    background-color: inherit;
+    color:#333;
+    border:1px solid #0c223d;
+    border-radius:0px;
+    font-weight:500;
+    margin: 0px 4px;
+    padding-left:0.8em;
+    padding-right:0.8em;
+    margin-top:15px;
+    
+}
+
+
+.btn-popup2:hover{
+    background-color: #eff1f5;
+    color:black;
+    transition:ease-in 0.3s;
+}
+
+
+
+.button-primary:hover,
+.all-wrapper .fc-button.fc-state-active:hover {
+    color: #fff;
+    background-color: #e32525;
+    border-color: #e32525;
+    transition:ease-in 0.3s;
+}
+
+.wallet-btn{
+    padding-left:1em !important;
+    padding-right:1em !important;
+}
+
+.form-con {
+    border-radius: 0;
+}
+
+.input-group-addon {
+    border-radius: 0;
+}
+
+.auth-box-w form .form-class .pre-icon {
+    position: absolute;
+    bottom: 5px;
+    font-size: 24px;
+    color: #0C223D;
+    left: -38px;
+}
+
+.select2-container--default .select2-selection--multiple {
+    border-radius: 0px;
+}
+
+.select .form-con {
+    border-radius: 0px;
+}
+
+select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border-radius: 0px!important;
+}
+
+.button-danger {
+    border-radius: 0px;
+}
+
+.button-sm {
+    border-radius: 0px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: transparent;
+    border: transparent;
+}
+        /* END FORMS AND BUTTONS */
+
+        @media only screen and (max-width: 1131px) {
+            .el-tablo .value {
+                font-size: 1.43rem;
+            }
+        }
+
+.nav-tabs > li {
+  background-color: #0c223d;
+    width: 95%;
+    height: 36px;
+    padding: 8px 3px;
+    margin: 0px 5px;
+    text-align: center;
+    cursor:pointer;
+}
+
+.nav-tabs > li:hover {
+    background-color: #e32525;
+    transition:ease-in 0.2s;
+}
+
+.nav>li {
+    position: relative;
+    display: block;
+    left: -10px;
+}
+
+.nav-tabs>li.active a {background-color: transparent !important; border:none !important;}
+.nav-tabs li a, .nav-tabs > li.active a { color:white !important; padding: 0px !important; }
+.nav-tabs li a:hover { background-color: transparent !important; border-color: transparent !important;}
+.paystack-container #test-mode-badge { display: none !important; }
+
+.savings-amount{
+    padding-right: 30px;
+    width: 130px;
+}
+
+.savings-td, .savings-amount{
+    border: 1.5px solid #ccc;
+    font-weight: 700;
+    color: #0c223d;
+    font-size: 14px;
+}
+
+.tr-head{
+    border-bottom: 2px solid #ccc;
+}
+
+.loan-amt{
+    display:inline-block;
+    width:100%;
+}
+
+.amt-summary-head{
+    font-weight: 600;
+    text-align: left;
+}
+
+.complete-bg{
+    background-color: rgba(26, 147, 111, .3);
+    color:#1A936F;
+}
+
+.pending-bg{
+    background-color: rgba(240, 152, 2, .3);
+    color:#F09802;
+}
+
+.cancel-bg{
+    background-color: rgba(232, 72, 85, .3);
+    color:#E84855;
+}
+
+.savings-td{
+    width:130px;
+}
+
+.edit-icon{
+    background-color: inherit;
+    color: grey;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+th{
+    border-top:0px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 0.8rem 0.9rem;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+
+.table-head{
+    font-size: 9.5px;
+    color: #0c223d;
+    font-weight: bold;
+    text-shadow: 0.5px 0.1px #0c223d;
+}
+
+.table-head > th{
+    border:0px !important;
+}
+
+.content-area > .element-header{
+    margin-bottom:0.8rem;
+}
+
+.content-i > .pad-all {
+    padding-top: 0px;
+    padding-right: 2rem !important;
+}
+
+.element-wrapper{
+    width:100%;
+}
+
+.sub-menu-dot > i{
+    font-size:9px;
+    color:#777;
+}
+
+
+.sub-menu > li:hover{
+    color:royalblue;
+    padding-left: 15px;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+
+.form-head{
+    font-size:14px;
+    font-weight:500;
+    color:#333;
+    padding-top:20px;
+    display: block;
+}
+
+.el-tablo .value {
+    width: auto;
+}
+
+.el-tablo {
+    padding:2rem;
+}
+
+.centered-form{
+    padding: 0px;
+    margin-top: 0px;
+}
+
+.centered-form2{
+    padding: 0px;
+    margin-top: 0px;
+    border-left:1px solid #ccc;
+}
+
+.seetings-row{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+label{
+    font-weight:500 !important;
+    color:#777 !important;
+}
+
+.label{
+    padding-left:0px !important;
+}
+
+.label > .text-capitalized{
+    border-bottom:1px solid #eee;
+    padding-bottom:10px;
+}
+
+.no-pad{
+    padding:0px !important;
+}
+
+.intermitent{
+    background-color: #eff1f5;
+    opacity:10%;
+}
+
+.modal-content{
+    border-radius:0px !important;
+}
+
+.modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.modal-header {
+    padding: 2rem !important;
+    padding-bottom: 0px !important;
+    border-bottom:0px !important;
+}
+
+.modal-header .close {
+    font-size: 25px !important;
+    opacity: 1 !important;
+    margin-top: -30px !important;
+    margin-right: -20px !important;
+}
+
+.modal-body {
+    position: relative;
+    padding: 0px 15px;
+}

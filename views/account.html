@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Account - Riby</title>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="template language" name="keywords">
+    <meta content="NatterBase" name="author">
+    <meta content="NatterBase" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="img/riby-favicon.png" sizes="32x32" type="image/png" rel="icon">
+    <link href="img/riby-favicon.png" sizes="16x16" type="image/png" rel="icon">
+    <link href="bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="bower_components/dropzone/dist/dropzone.css" rel="stylesheet">
+    <link href="bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="bower_components/datatables/media/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="auth-wrapper">
+    <div class="all-wrapper with-pattern">
+        <div class="auth-box-w">
+            <div class="logo-w">
+                <a href="/"><img alt="" src="img/riby-logo.svg" height="60px"></a>
+            </div>
+         
+         
+            <div class="pad-all-well">
+             <!-- no form tag submit form using angukar or jquery -->   
+              
+                   <div class="form-group">
+                    <label for=""> Account Name</label>
+                    <input class="form-control" placeholder="Enter Account Name" type="number">
+                    
+                </div>
+                   <div class="form-group">
+                    <label for=""> Account Number</label>
+                    <input class="form-control" placeholder="Enter Account Number" type="number">
+                    
+                </div>
+                
+
+                <div class="form-group">
+                    <label for=""> Bank</label>
+                    <img class="bankformimg" src="http://www.audioage.com/wp-content/uploads/2015/08/GTBank-logo_2015-e1452695636572.png"  >
+<select style=" padding-left:40px;" list="banks" class="form-control" name="bank">
+                
+                                                    <option >
+                                                        Select Bank
+                                                    </option>
+                                                    <option value="GTB">
+                                                       GTB
+                                                    </option>
+                                                    <option value="First Bank">
+                                                        First Bank
+                                                    </option>
+                                                    <option value="Union Bank">
+                                                        Union Bank
+                                                    </option>
+                                                    
+                                                </select>
+                   
+                </div>
+             
+              
+
+                <div class="buttons-w">
+                
+                    
+                       
+                            <a class="btn btn-primary btn-block" href="#popup1">Add Account</a>  
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+	<div class="col-md-4 push-md-4 mar-b">
+    	<img src="icon/success-icon-xhdpi.png" class="img-responsive center-block" />
+	</div>
+		<div class="content padd-all">
+            <h4 class="text-center mar-b">Account Details Added Successfully</h4>
+			 <a class="btn btn-primary btn-block" href="plan.html">Continue</a> 
+		</div>
+	</div>
+</div>
+ 
+
+</body>
+
+</html>

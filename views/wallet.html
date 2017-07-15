@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html ng-app="RSA" ng-controller="Wallet">
+
+<head>
+  <title>Riby Dashboard</title>
+  <meta charset="utf-8">
+  <meta content="ie=edge" http-equiv="x-ua-compatible">
+  <meta content="template language" name="keywords">
+  <meta content="NatterBase" name="author">
+  <meta content="NatterBase" name="description">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="img/riby-favicon.png" sizes="32x32" type="image/png" rel="icon">
+  <link href="img/riby-favicon.png" sizes="16x16" type="image/png" rel="icon">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    .button-md {
+      margin: 3px;
+      padding: 6px;
+    }
+  </style>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="all-wrapper">
+    <div class="layout-w">
+      <div class="menu-w menu-activated-on-click">
+        <div class="logo-w">
+          <a class="logo" href="index.html"><img src="img/riby-logo.svg"></a>
+          <div class="mobile-menu-trigger">
+            <div class="os-icon os-icon-hamburger-menu-1"></div>
+          </div>
+        </div>
+        <div class="menu-and-user">
+          <div class="logged-user-w">
+            <div class="avatar-w">
+              <img alt="" src="img/ayo.png">
+            </div>
+            <div class="logged-user-info-w">
+              <div class="logged-user-name">
+                <%= firstname %>
+                  <%= lastname %>
+              </div>
+              <div class="logged-user-role">
+                welcome
+              </div>
+            </div>
+          </div>
+          <ul class="main-menu">
+            <li>
+              <a href="/dashboard">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-window-content"></div>
+                </div>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="/allplans">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-basic-2-259-calendar"></div>
+                </div>
+                <span>Savings Plans</span>
+              </a>
+            </li>
+            <!--   <li>
+                  <a href="/wallet">
+                     <div class="icon-w">
+                        <div class="os-icon os-icon-wallet-loaded"></div>
+                     </div>
+                     <span>E-wallet</span>
+                  </a>
+                  </li> -->
+            <li id="sub" class="">
+              <a>
+                <div class="icon-w">
+                  <div class="os-icon os-icon-wallet-loaded"></div>
+                </div>
+                <span>Transactions</span></a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="/bank" class="sub-menu-dot">
+
+                                    <i class="fa fa-circle-o"></i>&nbsp; Bank Account</a>
+                </li>
+                <li>
+                  <a href="/wallet" class="sub-menu-dot">
+
+                                    <i class="fa fa-circle-o"></i>&nbsp; E-wallet</a>
+                </li>
+
+              </ul>
+            </li>
+            <li>
+              <a href="/settings">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-pencil-2"></div>
+                </div>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="/logout">
+                <div class="icon-w">
+                  <div class="os-icon os-icon-newspaper"></div>
+                </div>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content-w">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="#">E-wallet</a>
+          </li>
+        </ul>
+        <div class="content-i pad-all">
+          <div class="row">
+            <div class="column-md-4 column-sm-12">
+              <div class="element-wrapper">
+                <h6 class="element-header">
+                  Balance
+                </h6>
+                <div class="column-sm-12 text-left">
+                  <div class="element-box el-tablo">
+                    <div class="label text-left">
+                      <h5 class="text-left">WALLET </h5>
+                    </div>
+                    <hr>
+                    <div class="value text-left">
+                      <span class="complete-bg">
+                                ₦<span class="text-left" ng-bind = "wallet.expense_account + wallet.savings"></span>
+                      </span>
+
+                      <div class="col-md-12 text-center">
+                        <p></p>
+                        <button type="button" data-toggle="modal" data-target="#popup1" class="button button-primary wallet-btn">Withdraw</button>
+                        <button type="button" data-toggle="modal" data-target="#popup3" class="button button-primary-x wallet-btn"> Add Money</button>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="column-md-12 text-left">
+                        <span>Total Savings</span> ₦
+                        <b ng-bind="wallet.savings"></b>
+                      </div>
+                      <br>
+                      <div class="column-md-12 text-left">
+                        <span>Expense account</span> ₦
+                        <b ng-bind="wallet.expense_account"></b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column-sm-12 text-left">
+                  <div class="element-box el-tablo">
+                    <div class="label text-left">
+                      <h5>EXPENSE ACCOUNT</h5>
+                    </div>
+
+                    <div class="money-locked">
+                      <div class="label text-left">
+                        <h6 class="text-centralized">Money Locked</h6>
+                      </div>
+
+                      <div class="column-md-12 text-left">
+                        <span>Amount: </span>
+                        <b class="cancel-bg">₦0</b>
+                      </div>
+                      <div class="column-md-12 text-left">
+                        <span>Release Time Frame: </span>
+                        <b>Weekly</b>
+                      </div>
+                      <div class="column-md-12 text-left">
+                        <span>Release Amount: </span>
+                        <b class="pending-bg">₦0</b>
+                      </div>
+                    </div>
+                    <div class="column-md-12 text-center">
+                      <br>
+                      <a href="#popup5" class="button button-primary wallet-btn">Withdraw</a>
+                      <a href="#popup4" class="button button-primary-x wallet-btn"> Add Money</a>
+                      <a href="#popup2" class="button btn-popup2 wallet-btn"> Money Lock </a>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column-sm-8">
+              <div class="element-wrapper">
+                <h6 class="element-header">
+                  Transaction History
+                </h6>
+                <div class="element-box">
+                  <div class="table-responsive">
+                    <table class="table table-lightborder">
+                      <thead>
+                        <tr>
+                          <th class="text-center">
+                            Tag
+                          </th>
+
+                          <th class="text-center">
+                            Type
+                          </th>
+                          <th class="text-center">
+                            Amounts Total (naira)
+                          </th>
+                          <th class="text-center">
+                            Date
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="transation in Transactions">
+                          <td class="text-center">
+                            3 Months
+                          </td>
+
+                          <td class="text-center">
+                            <div class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
+                          </td>
+                          <td class="text-center">
+                            354
+                          </td>
+                          <td>
+
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Display the countdown timer in an element -->
+        </div>
+
+
+      </div>
+
+      <div id="popup2" class="overlay">
+        <div class="popup">
+          <div class="content pad-all-well">
+            <h6 class="element-header">
+              Money Lock
+            </h6>
+            <div class="form-class">
+              <label for="">Amount </label>
+              <input class="form-con" placeholder="Enter Amount" type="text">
+            </div>
+            <div class="form-class">
+              <label for="">Duration </label>
+              <div class="row">
+                <div class="column-md-5">
+                  <input class="form-con" placeholder="Duration" type="text">
+                </div>
+                <div class="column-md-7">
+                  <select class="form-con">
+                           <option>
+                              Weeks
+                           </option>
+                           <option>
+                              Months
+                           </option>
+                        </select>
+                </div>
+              </div>
+            </div>
+            <p> Release Frequency </p>
+            <div class="form-class">
+              <select class="form-con">
+                     <option>
+                        Weekly
+                     </option>
+                     <option>
+                        Monthly
+                     </option>
+                  </select>
+            </div>
+            <div class="form-class">
+              <label for="">Release Amount</label>
+              <input class="form-con" placeholder="Enter Release Amount" type="text">
+            </div>
+            <div class="buttons-w">
+              <a class="button button-primary create " href="#">Create</a>
+              <a class="button button-danger cancel" href="#">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="popup3" class="overlay">
+        <div class="popup">
+          <div class="content pad-all-well">
+            <div class="form-check">
+              <div class="form-class">
+                <label for=""><b>Amount</b></label>
+                <input class="form-con" placeholder="Enter Amount" type="text" ng-model="Form.amount">
+              </div>
+              <div class="form-class">
+                <label for=""><b>Payment Method</b></label>
+                <select class="form-con" ng-model="Form.type" ng-change="Method(Form.type)">
+                       <option value="1">
+                           Card 
+                        </option>
+                        <option value="2">
+                           Bank Account
+                        </option>
+                      
+                     </select>
+              </div>
+              <div class="form-class">
+                <label ng-if="Form.type == 1" for=""><b> Select Card </b></label>
+                <select class="form-con" ng-if="Form.type == 1" ng-model="Form.card">
+                     
+                         <option ng-repeat = "account in accounts" value="{{account.cardNo}}">
+                          **** **** **** {{account.cardNo}}
+                        </option>
+
+                     </select>
+
+
+
+                <label ng-if="Form.type == 2" for=""><b> Select Bank </b></label>
+
+                <select class="form-con" ng-if="Form.type == 2" ng-model="Form.bank">
+                       
+                        <option ng-repeat = "account in accounts"  value="{{account.account_number}}">
+
+                              {{account.bank_name}}
+                        </option>
+                       
+                       
+                     </select>
+                <a href="/bank">Click Here To Add Bank / Card Details</a>
+              </div>
+
+              <div class="form-class">
+                <label for=""><b>Savings Plan</b></label>
+                <select class="form-con" ng-model="Form.plan">
+
+                        <option ng-repeat = "plan in plans"  value="{{plan._id}}" >
+                        {{plan.plan_name}}
+                        </option>
+                       
+                     </select>
+              </div>
+
+              <br>
+              <div ng-if="!show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
+
+              <button ng-if="show" ng-click="Fund(Form)" class="button button-md button-primary">Continue</button>
+
+              <a href="#" class="button button-md button-danger">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="popup4" class="overlay">
+        <div class="popup">
+          <div class="content pad-all-well">
+            <div class="form-check">
+              <form>
+                <div class="form-class">
+                  <label for=""><b>Amount</b></label>
+                  <input class="form-con" placeholder="Enter Amount" type="text" ng-model="Form.amount">
+                </div>
+                <div class="form-class">
+                  <label for=""><b>Payment Method</b></label>
+                  <select class="form-con" ng-model="Form.type" ng-change="Method(Form.type)">
+                       <option value="1">
+                           Card 
+                        </option>
+                        <option value="2">
+                           Bank Account
+                        </option>
+                      
+                     </select>
+                </div>
+                <div class="form-class">
+                  <label ng-if="Form.type == 1" for=""><b> Select Card </b></label>
+                  <select class="form-con" ng-if="Form.type == 1" ng-model="Form.card">
+                     
+                         <option ng-repeat = "account in accounts"  value="{{account.cardNo}}">
+                          **** **** **** {{account.cardNo}}
+                        </option>
+
+                     </select>
+
+                  <label ng-if="Form.type == 2" for=""><b> Select Bank </b></label>
+
+                  <select class="form-con" ng-if="Form.type == 2" ng-model="Form.bank">
+                       
+                        <option ng-repeat = "account in accounts"  value="{{account.account_number}}" >
+
+                              {{account.bank_name}}
+                        </option>
+                       
+                       
+                     </select>
+                  <br>
+                  <div ng-if="!show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
+                  <button ng-if="show" ng-click="Fund(Form)" class="button button-md button-primary">Continue</button>
+                  <a href="#" class="button button-md button-danger">Cancel</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="popup5" class="overlay">
+        <div class="popup">
+          <div class="content pad-all-well">
+            <div class="form-check">
+              <div class="form-class">
+                <label for=""><b> Amount  </b></label>
+                <input class="form-con" placeholder="Enter Amount" type="text">
+              </div>
+
+              <div class="form-class">
+                <label for=""><b>Select Account </b> </label>
+                <select class="form-con">
+                        <option>
+                           Select from your Accounts
+                        </option>
+                        <option>
+                        </option>
+                     </select>
+                <a href="bank.html">Click Here To Add Bank Details</a>
+              </div>
+              <br>
+              <a href="#" class="button button-md button-primary">Withdraw</a>
+              <a href="#" class="button button-md button-danger">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="popup1" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h5 class="modal-title">Withdraw</h5>
+            </div>
+            <div class="modal-body pad-all">
+              <div class="form-class">
+                <label for=""><b>Percentage Amount  </b></label>
+                <input class="form-con" placeholder="Enter Amount" type="text">
+              </div>
+              <div class="form-class">
+                <label for=""><b>Select Plan </b> </label>
+                <select class="form-con">
+                        <option>
+                           Select from your plans
+                        </option>
+                        <option>
+                           Car
+                        </option>
+                        <option>
+                           All 
+                        </option>
+                     </select>
+              </div>
+              <div class="form-class">
+                <label for=""><b>Select Account </b> </label>
+                <select class="form-con">
+                        <option>
+                           Select from your Accounts
+                        </option>
+                        <option>
+                        </option>
+                        <option>
+                           All 
+                        </option>
+                     </select>
+                <a href="/bank">Click Here To Add Bank Details</a>
+              </div>
+              <br>
+              <a href="#" class="button button-md button-primary">Withdraw</a>
+              <a href="#" class="button button-md button-danger">Cancel</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal -->
+      <div id="popup1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-class">
+                <label for=""><b>Percentage Amount  </b></label>
+                <input class="form-con" placeholder="Enter Amount" type="text">
+              </div>
+              <div class="form-class">
+                <label for=""><b>Select Plan </b> </label>
+                <select class="form-con">
+                        <option>
+                           Select from your plans
+                        </option>
+                        <option>
+                           Car
+                        </option>
+                        <option>
+                           All 
+                        </option>
+                     </select>
+              </div>
+              <div class="form-class">
+                <label for=""><b>Select Account </b> </label>
+                <select class="form-con">
+                        <option>
+                           Select from your Accounts
+                        </option>
+                        <option>
+                        </option>
+                        <option>
+                           All 
+                        </option>
+                     </select>
+                <a href="/bank">Click Here To Add Bank Details</a>
+              </div>
+              <br>
+              <a href="#" class="button button-md button-primary">Withdraw</a>
+              <a href="#" class="button button-md button-danger">Cancel</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+</body>
+
+</html>

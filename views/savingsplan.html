@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Riby Dashboard</title>
+        <meta charset="utf-8">
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <meta content="template language" name="keywords">
+        <meta content="NatterBase" name="author">
+        <meta content="NatterBase" name="description">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link href="img/riby-favicon.png" sizes="32x32" type="image/png" rel="icon">
+        <link href="img/riby-favicon.png" sizes="16x16" type="image/png" rel="icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/main.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    </head>
+    <body>
+        <div class="all-wrapper">
+        <div class="layout-w">
+            <div class="menu-w menu-activated-on-click">
+                <div class="logo-w">
+                    <a class="logo" href="index.html"><img src="img/riby-logo.svg"></a>
+                    <div class="mobile-menu-trigger">
+                        <div class="os-icon os-icon-hamburger-menu-1"></div>
+                    </div>
+                </div>
+                <div class="menu-and-user">
+                    <div class="logged-user-w">
+                        <div class="avatar-w">
+                            <img alt="" src="img/ayo.png">
+                        </div>
+                        <div class="logged-user-info-w">
+                            <div class="logged-user-name">
+                                <%= firstname %>  <%= lastname %> 
+                            </div>
+                            <div class="logged-user-role">
+                                welcome
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="main-menu">
+                  <li>
+                     <a href="/dashboard">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-window-content"></div>
+                        </div>
+                        <span>Dashboard</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/allplans">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-basic-2-259-calendar"></div>
+                        </div>
+                        <span>Savings Plans</span>
+                     </a>
+                  </li>
+                
+                 <!--  <li>
+                     <a href="/wallet">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-wallet-loaded"></div>
+                        </div>
+                        <span>E-wallet</span>
+                     </a>
+                  </li> -->
+                      <li id="sub" class="">
+                        <a>
+                            <div class="icon-w">
+                                <div class="os-icon os-icon-wallet-loaded"></div>
+                            </div>
+                            <span>Transactions</span></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="/bank" class="sub-menu-dot">
+
+                                    <i class="fa fa-circle-o"></i>&nbsp; Bank Account</a>
+                            </li>
+                            <li>
+                                <a href="/wallet" class="sub-menu-dot">
+
+                                    <i class="fa fa-circle-o"></i>&nbsp; E-wallet</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                   <li>
+                     <a href="/settings">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-pencil-2"></div>
+                        </div>
+                        <span>Settings</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="/login">
+                        <div class="icon-w">
+                           <div class="os-icon os-icon-newspaper"></div>
+                        </div>
+                        <span>Logout</span>
+                     </a>
+                  </li>
+               </ul>
+                </div>
+            </div>
+            <div class="content-w">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">Savings Plans</a>
+                    </li>
+                </ul>
+                <div class="content-i">
+                    <div class="content-box">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="element-wrapper">
+                                    <h6 class="element-header">
+                                        Savings History
+                                    </h6>
+                                    <div class="element-box">
+                                        <div class="row">
+                                            <h5 class="form-header col-sm-7">
+                                                Savings Graph
+                                            </h5>
+                                            <div class="col-sm-5">
+                                                <select class="form-control input-xs">
+                                                    <option>
+                                                        JULY
+                                                    </option>
+                                                    <option>
+                                                        JUNE
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-desc">
+                                            <b> 82% done </b>, well done Jimmy White, you are close to your goal
+                                        </div>
+                                        <div class="el-chart-w">
+                                            <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                                            <canvas height="178" id="barChart1" width="369" style="display: block; width: 369px; height: 178px;"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="element-wrapper">
+                                    <h6 class="element-header">
+                                        Infos
+                                    </h6>
+                                    <div class="element-box el-tablo">
+                                        <div class="label">
+                                            Number ofSavings Plans
+                                        </div>
+                                        <div class="value">
+                                            5
+                                        </div>
+                                    </div>
+                                    <div class="element-box el-tablo">
+                                        <div class="label">
+                                            Total Commiments
+                                        </div>
+                                        <div class="value">
+                                            12
+                                        </div>
+                                    </div>
+                                    <div class="element-box el-tablo">
+                                        <div class="label">
+                                            Total Savings
+                                        </div>
+                                        <div class="value">
+                                            $2,507
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="element-wrapper">
+                                <h6 class="element-header">
+                                    Transaction History
+                                </h6>
+                                <div class="element-box">
+                                    <div class="table-responsive">
+                                        <table class="table table-lightborder">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Purpose
+                                                    </th>
+                                                    <th>
+                                                        Payment Method
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Status
+                                                    </th>
+                                                    <th class="text-right">
+                                                        Amounts Total (naira)
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="nowrap">
+                                                        3 Months
+                                                    </td>
+                                                    <td>
+                                                        <img src="img/mastercard.svg" alt="mastercard" style=" height: 33px;">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        354
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="nowrap">
+                                                        infinity
+                                                    </td>
+                                                    <td>
+                                                        <img src="img/paystack.svg" alt="paystack" style=" height: 15px;">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="status-pill red" data-title="Cancelled" data-toggle="tooltip"></div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        94
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-panel">
+                        <div class="element-wrapper">
+                            <h6 class="element-header">
+                                Start New Savings Plan
+                            </h6>
+                            <div class="element-box">
+                                <h4 class="text-center">
+                                Create New Savings Plan <br>
+                                <br>
+                                   <div class="form-group"> <label for="">Plan Name</label>
+                        <input class="form-control" ng-focus="open_plan()" placeholder="Enter Name of Savings Plan" type="text" required>
+                                </div>
+                                <hr>
+                        <button ng-click = "open_plan()" class="button button-md button-primary">Create New Plan</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="newplan" class="overlay">
+                    <div class="popup" style="padding:40px; margin-top:5px; width:40%; ">
+                        <div class="">
+                            <form action="summary.html">
+                                <div class="form-group">
+                                    <label for="">Plan Name</label>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option>
+                                                Car Plan
+                                            </option>
+                                            <option>
+                                                Baby Plan
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <label>OR Enter A Custom Name</label>
+                                    <input class="form-control" placeholder="Enter Name of Savings Plan" type="text" ng-model="Form.plan_name">
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label> Duration </label>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <input class="form-control" placeholder="Enter Duration" type="text">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control" ng-model="Form.plan_duration">
+                                                <option value="Days">
+                                                    Days
+                                                </option>
+                                                <option value="Months">
+                                                    Months
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <label for=""> Amount </label>
+                                    <input class="form-control" placeholder="Enter Amount" type="number" ng-model="Form.amount">
+                                </div>
+                                <hr>
+                                <p> Deduction Frequency </p>
+                                <div class="form-group">
+                                    <select class="form-control" ng-model="Form.">
+                                        <option disabled="true">
+                                            Choose Deduction Frequency
+                                        </option>
+                                        <option value="">
+                                            Weekly
+                                        </option>
+                                        <option value="">
+                                            Bi-Weekly
+                                        </option>
+                                        <option value="">
+                                            Monthly
+                                        </option>
+                                        <option> value=""
+                                            Quaterly
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>
+                                            Day Of The Month
+                                        </option>
+                                        <option>
+                                            2nd day
+                                        </option>
+                                        <option>
+                                            3rd day
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="buttons-w">
+                                    <button class="btn btn-primary btn-block">Next</button>
+                                    <a href="#" class="btn btn-danger btn-block">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Display the countdown timer in an element -->
+        </div>
+        <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+    </body>
+</html>

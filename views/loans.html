@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Riby Dashboard</title>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="template language" name="keywords">
+    <meta content="NatterBase" name="author">
+    <meta content="NatterBase" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="img/riby-favicon.png" sizes="32x32" type="image/png" rel="icon">
+    <link href="img/riby-favicon.png" sizes="16x16" type="image/png" rel="icon">
+
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+</head>
+
+<body>
+    <div class="all-wrapper">
+        <div class="layout-w">
+            <div class="menu-w menu-activated-on-click">
+                <div class="logo-w">
+                    <a class="logo" href="index.html"><img src="img/riby-logo.svg"></a>
+                    <div class="mobile-menu-trigger">
+                        <div class="os-icon os-icon-hamburger-menu-1"></div>
+                    </div>
+                </div>
+                <div class="menu-and-user">
+                    <div class="logged-user-w">
+                        <div class="avatar-w">
+                            <img alt="" src="img/ayo.png">
+                        </div>
+                        <div class="logged-user-info-w">
+                            <div class="logged-user-name">
+                                Ayo Akoduba
+                            </div>
+                            <div class="logged-user-role">
+                                Admin
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="main-menu">
+                        <li>
+                            <a href="index.html">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-window-content"></div>
+                                </div>
+                                <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href="allplans.html">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-basic-2-259-calendar"></div>
+                                </div>
+                                <span>Savings Plans</span></a>
+                        </li>
+                        <li>
+                            <a href="bank.html">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-basic-2-259-calendar"></div>
+                                </div>
+                                <span>Bank Account</span></a>
+                        </li>
+                        <li>
+                            <a href="wallet.html">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-wallet-loaded"></div>
+                                </div>
+                                <span>E-wallet</span></a>
+                        </li>
+
+                        <li>
+                            <a href="loans.html">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-delivery-box-2"></div>
+                                </div>
+                                <span>Loans</span></a>
+                        </li>
+                        <li>
+                            <a href="savingsplan.html">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-text-input"></div>
+                                </div>
+                                <span>History</span></a>
+                        </li>
+
+                        <li>
+                            <a href="settings.html">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-pencil-2"></div>
+                                </div>
+                                <span>Settings</span></a>
+                        </li>
+
+                        <li>
+                            <a href="login.html">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-newspaper"></div>
+                                </div>
+                                <span>Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="content-w">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">E-wallet</a>
+                    </li>
+                </ul>
+                <div class="content-i pad-all">
+
+                    <div class="row">
+
+
+
+
+                        <div class="col-sm-12">
+                            <div class="element-wrapper">
+                                <h6 class="element-header">
+                                    Transaction History
+                                </h6>
+                                <div class="element-box">
+                                    <div class="table-responsive">
+                                        <table class="table table-lightborder">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Purpose
+                                                    </th>
+                                                    <th class="text-right">
+                                                        Amounts Total (naira)
+                                                    </th>
+                                                    <th class="text-center">
+                                                        Status
+                                                    </th>
+
+                                                    <th class="text-center">
+                                                        Repayment Schedule
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="nowrap">
+                                                        Family House Repair
+                                                    </td>
+                                                    <td class="text-center">
+                                                        N 300,540
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="status-pill red" data-title="Complete" data-toggle="tooltip"></div>
+                                                        Pending
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Weekly Repayments | <a href="#changerepayment" class="btn btn-info btn-md">Change Repayment schedule</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="nowrap">
+                                                        Family House Repair
+                                                    </td>
+                                                    <td class="text-center">
+                                                        N 30,540
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
+                                                        Paid
+                                                    </td>
+                                                    <td class="text-center">
+                                                        Weekly Repayments </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <!-- Display the countdown timer in an element -->
+                </div>
+
+                <div id="changerepayment" class="overlay">
+                    <div class="popup">
+
+                        <div class="content pad-all">
+                            <p> Change Repayment Schedule </p>
+                            <form>
+
+
+
+                                <div class="form-group">
+
+
+                                    <select class="form-control">
+                                                                                 <option>
+                                                                             Repayment Schedule Frequency
+                                                                            </option>
+                                                                            <option>
+                                                                              Weekly
+                                                                            </option>
+                                                                            <option>
+                                                                                Bi-Weekly
+                                                                            </option>
+                                                                            <option>
+                                                                               Monthly
+                                                                            </option>
+                                                                            <option>
+                                                                               Quaterly
+                                                                            </option>
+                                                                          </select>
+                                </div>
+                                <div class="form-group">
+
+
+                                    <select class="form-control">
+                                                                                
+                                                                            <option>
+                        Day Of The Month
+                                                                            </option>
+                                                                            <option>
+                                                                                2nd day
+                                                                            </option>
+                                                                            <option>
+                                                                                3rd day
+                                                                            </option>
+                                                                          </select>
+                                </div>
+                                <div class="buttons-w">
+                                    <div class="row">
+                                        <div class="col-md-6"> <a href="#" class="btn btn-primary btn-block">Save</a></div>
+                                        <div class="col-md-6"> <a href="#" class="btn btn-danger btn-block">Cancel</a></div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="bower_components/jquery/dist/jquery.min.js"></script>
+ <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+</body>
+
+</html>
