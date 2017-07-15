@@ -1,8 +1,9 @@
 RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
 
 
-    let EndPoint = "http://localhost:3000/";
-    let Bank = function () {
+    var EndPoint = "/";
+
+    var Bank = function () {
 
         $http.get(EndPoint + 'users-bank')
             .success(function (Data) {
@@ -93,14 +94,12 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
     };
 
 
-    var tsavings = function () {
+    var total_savings = function () {
 
         $http.get(EndPoint + 'totalsavings')
             .success(function (Data) {
 
-                console.log(Data.value);
-
-                $scope.totalsavings = Data.value
+                $scope.totalsavings = Data.data;
 
             })
             .error(function (data) {
@@ -113,7 +112,7 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
 
     ///verifiedsavers
 
-    var vsavers = function () {
+    var verified_savers = function () {
 
         $http.get(EndPoint + 'verifiedsavers')
             .success(function (Data) {
@@ -132,7 +131,7 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
     };
 
 
-    var tplan = function () {
+    var total_plans = function () {
 
         $http.get(EndPoint + 'totalplan')
             .success(function (Data) {
@@ -329,15 +328,15 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
     allwithdraw();
     allusers();
     Bank();
-    tplan();
+    total_plans();
     Bankhistory();
     card();
     plan();
     user();
     wallet();
     wallethistory();
-    tsavings();
-    vsavers();
+    total_savings();
+    verified_savers();
 
 
 
