@@ -58,6 +58,7 @@ require('./apps/Profile/Profile')(app);
 //  Bank ====================================================================
 
 require('./apps/Bank/Bank')(app);
+require('./apps/Bank/card')(app);
 
 //  Dashboard ====================================================================
 
