@@ -19,9 +19,9 @@ var express = require('express'),
 module.exports = function (app) {
 
 
-    app.get('/admin', isLoggedIn, function (req, res) {
+    app.get('/admin-dashboard', isLoggedIn, function (req, res) {
 
-        res.render("admin/index");
+        res.render("admin/index",{ firstname: req.user.first_name, lastname: req.user.last_name });
 
     });
 
@@ -41,13 +41,13 @@ module.exports = function (app) {
 
     app.get('/admin/history', isLoggedIn, function (req, res) {
 
-        res.render("admin/history");
+        res.render("admin/history",{ firstname: req.user.first_name, lastname: req.user.last_name });
 
     });
 
     app.get('/admin/loans', isLoggedIn, function (req, res) {
 
-        res.render("admin/loans");
+        res.render("admin/loans",{ firstname: req.user.first_name, lastname: req.user.last_name });
 
     });
 
@@ -65,17 +65,17 @@ module.exports = function (app) {
 
     app.get('/admin/notifs', isLoggedIn, function (req, res) {
 
-        res.render("admin/notifs");
+        res.render("admin/notifs",{ firstname: req.user.first_name, lastname: req.user.last_name });
 
     });
     app.get('/admin/settings', isLoggedIn, function (req, res) {
 
-        res.render("admin/settings");
+        res.render("admin/settings",{ firstname: req.user.first_name, lastname: req.user.last_name });
 
     });
     app.get('/admin/withdraw', isLoggedIn, function (req, res) {
 
-        res.render("admin/withdraw");
+        res.render("admin/withdraw",{ firstname: req.user.first_name, lastname: req.user.last_name });
 
     });
 
@@ -151,7 +151,7 @@ module.exports = function (app) {
     app.get('/allusers', function (req, res) {
         console.log('count amount plan');
 
-        User.count(function (err, user) {
+        User.count({access:0},function (err, user) {
             if (err) { res.send(err) };
             res.json({ 'value': user });
 
@@ -204,7 +204,29 @@ module.exports = function (app) {
 
     });
 
+       
+       app.post('/createadmin', function(req, res){
 
+
+               console.log(req.body);
+
+                User.create(req.body, function (err, user) {
+
+                    if (err) {
+                        console.log(err);
+
+                        res.send({ status: false, message: "error creating Admin" });
+
+                    } else {
+
+                       
+
+                        res.send({status: true, data: req.body});
+                    }
+
+                });
+
+       });
 
 
 
