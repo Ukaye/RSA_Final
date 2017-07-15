@@ -193,7 +193,7 @@ a{
     padding:0.8em !important;
 }
 
-.btn-popup2{
+.button-popup2{
     background-color: inherit;
     color:#333;
     border:1px solid #0c223d;
@@ -207,7 +207,7 @@ a{
 }
 
 
-.btn-popup2:hover{
+.button-popup2:hover{
     background-color: #eff1f5;
     color:black;
     transition:ease-in 0.3s;
@@ -223,7 +223,7 @@ a{
     transition:ease-in 0.3s;
 }
 
-.wallet-btn{
+.wallet-button{
     padding-left:1em !important;
     padding-right:1em !important;
 }
