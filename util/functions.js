@@ -122,7 +122,6 @@ var Email = function(email, code) {
     }));
 
     transporter.use('compile', hbs(options));
-
       var mailOptions = {
           from      : 'Riby Savers <info@riby.me>',
           to        :  email,

@@ -8,7 +8,6 @@ var express = require('express'),
     rte = new RTE (config.rte.Tenant_ID, config.rte.Key, config.rte.Token, config.rte.Base_Url);
 
 module.exports = function (app) {
-
     app.get('/rte/get-all-banks', function(req, res){
         rte.Bank.getAllBanks(function(error, body){
             if (body.responseCode == 1)
