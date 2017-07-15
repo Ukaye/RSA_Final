@@ -54,7 +54,7 @@
                         <div class="os-icon os-icon-newspaper"></div>
                      </div>
                      <span>Notifications </span>
-                     <b class="notifs-label">4</b>
+                    
                   </a>
                </li>
                <li>
@@ -84,7 +84,15 @@
             </ul>
          </div>
       </div>
-      <div class="content-w pad-all-well">
+      <div class="content-w ">
+        <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="../#">Settings</a>
+                    </li>
+                </ul>
       <div class="content-i">
       <div class="content-box">
          <div class="row">
@@ -129,17 +137,17 @@
                            </thead>
                            <tbody ng-repeat=" withdraw in allwithdraw">
                               <tr>
-                                 <td class="nowrap">
-                                    {{withdraw.first_name}}
+                                 <td class="nowrap" ng-bind="withdraw.first_name">
+                                    
                                  </td>
-                                 <td>
-                                    {{withdraw.Email}}
+                                 <td ng-bind="withdraw.Email">
+                                   
                                  </td>
-                                 <td>
-                                    {{withdraw.Phone}}
+                                 <td ng-bind ="withdraw.Phone">
+                                 
                                  </td>
-                                 <td>
-                                    {{withdraw.Amount}}
+                                 <td ng-bind="withdraw.Amount">
+                                   
                                  </td>
                                  <td class="text-center">
                                     <a href="#popplan" class="button button-primary button-md">
@@ -213,11 +221,7 @@
                                  <td ng-bind="amount">
                                   
                                  </td>
-                               <!--   <td class="text-center">
-                                    <a href="#popplan" class="button button-primary button-md">
-                                    View
-                                    </a>
-                                 </td> -->
+                          
                                  <td class="text-center">
                                     <button  class="button button-primary button-md">
                                     Approve

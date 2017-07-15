@@ -59,7 +59,7 @@
                                     <div class="os-icon os-icon-newspaper"></div>
                                 </div>
                                 <span>Notifications </span>
-                                <b class="notifs-label">4</b>
+                               
                             </a>
                         </li>
                         <li>
@@ -77,12 +77,13 @@
                                 <span>Settings</span></a>
                         </li>
                         <li>
-                            <a href="/login">
-                                <div class="icon-w">
-                                    <div class="os-icon os-icon-user-male-circle"></div>
-                                </div>
-                                <span>Log Out</span></a>
-                        </li>
+                  <a href="#logout">
+                     <div class="icon-w">
+                        <div class="os-icon os-icon-user-male-circle"></div>
+                     </div>
+                     <span>Log Out</span>
+                  </a>
+               </li>
 
                     </ul>
 
@@ -128,20 +129,20 @@
                                                 </thead>
                                                 <tbody ng-repeat="user in users">
                                                     <tr>
-                                                        <td class="nowrap">
-                                                            {{user.first_name}}
+                                                        <td class="nowrap" ng-bind="user.first_name">
+                                                          
                                                         </td>
-                                                        <td>
-                                                            {{user.last_name}}
+                                                        <td ng-bind="user.last_name">
+                                                        
+                                                        </td >
+                                                        <td ng-bind="user.Email">
+                                                         
                                                         </td>
-                                                        <td>
-                                                            {{user.Email}}
-                                                        </td>
-                                                        <td>
-                                                            {{user.Phone}}
+                                                        <td ng-bind="user.Phone">
+                                                          
                                                         </td>
                                                         <td class="text-center">
-                                                            <a href="#popplan" class="button button-primary button-md">
+                                                            <a href="#popplan" ng-click ="userplan(user.Phone)" class="button button-primary button-md">
                                                                                         View
                                                            </a>
                                                         </td>
@@ -155,13 +156,13 @@
                             </div>
                             <div id="popplan" class="overlay">
 
-                            <a href="#"><button type="button button-danger text-center" class="close" ><span aria-hidden="true">×</span></button> </a> 
+                            <a href="#"><button type="button button-danger text-center" class="close" ><span class="text-danger" aria-hidden="true">×</span></button> </a> 
 
                                 <div class="popup" style="padding:40px; margin-top:15px; width:60%; ">
 
                                     <div class="">
                                         <div class="table-responsive" ng-if="show">
-                                            <table class="table table-lightborder">
+                                            <table class="table table-border">
 
                                                 <thead>
                                                     <tr>
@@ -179,9 +180,7 @@
                                                         <th>
                                                             Duration
                                                         </th>
-                                                        <th>
-                                                            Deduction time
-                                                        </th>
+                                                       
                                                         <th>
                                                             Deduction amount
                                                         </th>
@@ -189,24 +188,29 @@
 
                                                     </tr>
                                                 </thead>
-                                                <tbody  ng-repeat ="plan in plans">
+                                                <tbody  ng-repeat ="plan in userplans">
                                                     <tr>
-                                                        <td class="nowrap" ng-bind ="plan.name">
+                                                        <td class="nowrap" ng-bind ="plan.plan_name ">
                                                            
                                                         </td>
-                                                        <td ng-bind ="plan.Saved">
+                                                        <td>
+
+                                                         ₦<span class="text-center" ng-bind ="plan.saved | number"></span>
                                                          
                                                         </td>
-                                                        <td ng-bind ="plan.target">
+                                                        <td >
+
+                                                        ₦<span ng-bind ="plan.target_amount | number"></span>
                                                         
                                                         </td>
-                                                        <td ng-bind ="plan.duration">
+                                                        <td >
+                                                        
+                                                        <span ng-bind ="plan.duration"></span> days
                                                           
                                                         </td>
-                                                        <td class="text-right" ng-bind ="plan.deduction_day">
-                                                           
-                                                        </td>
-                                                        <td class="nowrap" ng-bind ="plan.amount">
+                                                      
+                                                        <td class="nowrap" >
+                                                        ₦<span ng-bind ="plan.amount | number"></span>
                                                           
                                                         </td>
                                                     </tr>
@@ -222,7 +226,7 @@
                  
                                            </div>
 
-                                            <div ng-if = "!plans" class="text-center"   >
+                                            <div ng-if = "!userplans" class="text-center"   >
 
                                               <h2>No Active Plan</h2>
                  

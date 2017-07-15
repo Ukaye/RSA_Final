@@ -307,6 +307,34 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
     };
 
 
+       $scope.userplan = function (phone) {
+
+        console.log(phone);
+
+        $scope.show = "";
+
+        $http.get(EndPoint + 'plans/'+phone)
+            .success(function (Data) {
+
+                if (Data.status == true) {
+
+                    $scope.show = true;
+
+                $scope.userplans = Data.data;
+
+                }
+            })
+            .error(function (data) {
+
+
+                $scope.show = true;
+
+                $scope.error = "Connection Error";
+
+            });
+    };
+
+
     let wallethistory = function () {
 
         $http.get(EndPoint + 'users-wallethistory')
