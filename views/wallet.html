@@ -143,10 +143,10 @@
                                 ₦<span class="text-left" ng-bind = "wallet.expense_account + wallet.savings"></span>
                       </span>
 
-                      <div class="col-md-12 text-center">
+                      <div class="column-md-12 text-center">
                         <p></p>
-                        <button type="button" data-toggle="modal" data-target="#popup1" class="button button-primary wallet-btn">Withdraw</button>
-                        <button type="button" data-toggle="modal" data-target="#popup3" class="button button-primary-x wallet-btn"> Add Money</button>
+                        <button type="button" data-toggle="modal" data-target="#popup1" class="button button-primary wallet-button">Withdraw</button>
+                        <button type="button" data-toggle="modal" data-target="#popup3" class="button button-primary-x wallet-button"> Add Money</button>
                       </div>
                     </div>
                     <hr>
@@ -189,9 +189,9 @@
                     </div>
                     <div class="column-md-12 text-center">
                       <br>
-                      <a href="#popup5" class="button button-primary wallet-btn">Withdraw</a>
-                      <a href="#popup4" class="button button-primary-x wallet-btn"> Add Money</a>
-                      <a href="#popup2" class="button btn-popup2 wallet-btn"> Money Lock </a>
+                      <a href="#popup5" class="button button-primary wallet-button">Withdraw</a>
+                      <a href="#popup4" class="button button-primary-x wallet-button"> Add Money</a>
+                      <a href="#popup2" class="button button-popup2 wallet-button"> Money Lock </a>
 
                     </div>
                   </div>
@@ -554,7 +554,15 @@
 
         </div>
       </div>
-
+<script src="/js/Angular/angular.min.js"></script>
+    <!-- App script-->
+    <script src="/js/Angular/app.js"></script>
+      <script src="/js/Angular/ui-bootstrap-tpls-1.1.0.js" type="text/javascript"></script>
+       <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+    <script src="/js/Angular/angular-animate.js" type="text/javascript"></script>
+    <!-- controller script-->
+    <script src="/js/controllers/wallet/wallet.js"></script>
 </body>
 
 </html>

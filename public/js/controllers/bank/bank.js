@@ -5,7 +5,7 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
   var profile = JSON.parse(localStorage.profile);
   $scope.banks = [];
   $scope.show = true;
-
+  
   $scope.open_error = function (v) {
 
 
