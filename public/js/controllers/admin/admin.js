@@ -2,6 +2,7 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
 
 
     var EndPoint = "/";
+    $scope.show = true;
 
     var Bank = function () {
 
@@ -119,7 +120,7 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
 
 
                 console.log(Data);
-                $scope.vsavers = Data.value
+                $scope.vsavers = Data.value;
 
             }
             )
@@ -299,6 +300,34 @@ RSA.controller('admin', function ($scope, $http, $timeout, toastr) {
                 }
             })
             .error(function (data) {
+
+                $scope.error = "Connection Error";
+
+            });
+    };
+
+
+       $scope.userplan = function (phone) {
+
+        console.log(phone);
+
+        $scope.show = "";
+
+        $http.get(EndPoint + 'plans/'+phone)
+            .success(function (Data) {
+
+                if (Data.status == true) {
+
+                    $scope.show = true;
+
+                $scope.userplans = Data.data;
+
+                }
+            })
+            .error(function (data) {
+
+
+                $scope.show = true;
 
                 $scope.error = "Connection Error";
 

@@ -1,0 +1,218 @@
+        * {
+            font-family: 'Work Sans', sans-serif!important;
+        }
+.notifs-label{
+    border-radius: 5px;
+    background-color: red;
+    color: #fff;
+    max-height: 20px;
+    font-weight: bolder;
+    padding: 0 5px;
+}
+#myProgress {
+  width: 100%;
+  background-color: #f2f4f8;
+}
+.bankformimg{
+    position: relative;
+    left: -80px;
+    width: 30px;
+    top: 36px;
+}
+.bankformimg-sm {
+    position: relative;
+    left: -80px;
+    width: 10px;
+    top: 6px;
+}
+#myBar {
+
+  height: 5px;
+  background-color: rgba(0,0,0,.5);
+}
+ .mar-b{
+     margin-bottom: 20px;
+ }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #0C223D;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #0C223D;
+}
+.popup .close:hover {
+  color: #0C223D;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+
+
+.pad-all-well{
+            padding: 20px;
+        }
+        .pad-left{
+
+            padding-left: 20px;
+        }
+        .pad-left-md{
+
+            padding-left: 35px;
+        }
+        .pad-left-well{
+
+            padding-left: 50px;
+        }
+        .pad-hor{
+          padding-right: 20px;
+            padding-left: 20px;
+        }
+        .pad-all{
+            padding: 20px;
+        }
+
+        
+        body {
+            background: #ffffff!important;
+        }
+
+        .menu-w .logo-w img {
+            width: 100px;
+        }
+
+        .invoice-logo-w {
+            width: 100px;
+        }
+
+        .menu-w ul.main-menu > li .icon-w {
+            color: #0C223D;
+        }
+
+        .element-wrapper .element-header:after {
+            background-color: #e32525;
+        }
+
+        .auth-box-w .auth-header:after {
+            background-color: #e32525;
+        }
+        /* FORMS AND BUTTONS */
+
+        .button-primary,
+        .all-wrapper .fc-button.fc-state-active {
+            color: #fff;
+            background-color: #0c223d;
+            border-color: #0c223d;
+            border-radius: 0px;
+        }
+
+        .button-primary:hover,
+        .all-wrapper .fc-button.fc-state-active:hover {
+            color: #fff;
+            background-color: #e32525;
+            border-color: #e32525;
+        }
+
+        .form-con {
+            border-radius: 0;
+        }
+
+        .input-group-addon {
+            border-radius: 0;
+        }
+
+        .auth-box-w form .form-class .pre-icon {
+            position: absolute;
+            bottom: 5px;
+            font-size: 24px;
+            color: #0C223D;
+            left: -38px;
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            border-radius: 0px;
+        }
+
+        .select .form-con {
+            border-radius: 0px;
+        }
+
+        select2-container--default .select2-selection--multiple .select2-selection__choice {
+            border-radius: 0px!important;
+        }
+
+        .button-danger {
+            border-radius: 0px;
+        }
+
+        .button-sm {
+            border-radius: 0px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: transparent;
+            border: transparent;
+        }
+        /* END FORMS AND BUTTONS */
+
+        @media only screen and (max-width: 1131px) {
+            .el-tablo .value {
+                font-size: 1.43rem;
+            }
+        }
+
+.nav-tabs > li {
+  background-color: #0c223d;
+    width: 95%;
+    height: 36px;
+    padding: 8px 3px;
+    margin: 0px 1px;
+    text-align: center;
+}
+
+.nav-tabs>li.active a {background-color: transparent !important; border:none !important;}
+.nav-tabs li a, .nav-tabs > li.active a { color:white !important; padding: 0px !important; }
+.nav-tabs li a:hover { background-color: transparent !important; border-color: transparent !important;}
+.paystack-container #test-mode-badge { display: none !important; }

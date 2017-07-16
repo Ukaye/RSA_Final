@@ -6,6 +6,7 @@ RSA
   var profile = JSON.parse(localStorage.profile);
   $scope.banks = [];
   $scope.show = true;
+<<<<<<< HEAD
 
   $http.get(EndPoint + 'rte/get-account-status')
     .success(function (Data) {

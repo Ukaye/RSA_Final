@@ -138,10 +138,8 @@ module.exports = function (app) {
         var phone = card.phone;
 
         //Checks if card already exists
-        console.log(card);
-        var check = card.no;
+        var check  = card.no;
         var length = check.length;
-
         check = check.substring((length - 4), length);
 
         Card.findOne({ 'cardNo': check }, function (err, card_obj) {
