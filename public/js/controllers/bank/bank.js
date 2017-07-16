@@ -1,4 +1,5 @@
-RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
+RSA
+.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
 
   var EndPoint = "/";
   var Phone = window.localStorage.getItem("user");
@@ -6,9 +7,16 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
   $scope.banks = [];
   $scope.show = true;
 
+  $http.get(EndPoint + 'rte/get-account-status')
+    .success(function (Data) {
+      if (Data.status == false) {
+        $scope.rte_signup();
+        toastr.info(Data.message, 'Warning!');
+      }
+    })
+    .error(function (data) { });
+
   $scope.open_error = function (v) {
-
-
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: EndPoint + 'modal/error.html',
@@ -27,6 +35,28 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
     });
   };
 
+  $scope.rte_signup = function () {
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: EndPoint + 'modal/rte-signup.html',
+      controller: 'rte_signup',
+      backdrop  : 'static',
+      keyboard  : false,
+      resolve: {
+        profile: function () {
+          return profile;
+        },
+        EndPoint: function () {
+          return EndPoint;
+        }
+      }
+    });
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+
+    });
+  };
 
 
   $http.get(EndPoint + 'rte/get-all-banks')
@@ -42,7 +72,7 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
   $scope.Bank = function (data) {
     bank_details = JSON.parse(data.bank);
     var bank = {};
-    bank.user_id = profile.Id;
+    bank.user_id = profile._id;
     bank.name = profile.first_name+" "+profile.last_name;
     bank.number = data.account_number;
     bank.bank_name = bank_details.name;
@@ -55,6 +85,7 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
           toastr.success(Data.message, 'Success!');
           $scope.account_name = bank.name;
           $scope.account_number = bank.number;
+          $scope.bank_code = bank.bank_code;
           $scope.banks.push(bank);
         } else {
           toastr.error(Data.message, 'Error!');
@@ -68,9 +99,9 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
   }
 
 
-  $scope.confirm = function (number, index) {
+  $scope.confirm = function (number, bank_code, index) {
     $scope.show = "";
-    $http.get(EndPoint + 'rte/get-user-bank/'+data.bank_code+'/'+number)
+    $http.get(EndPoint + 'rte/get-user-bank/'+bank_code+'/'+number)
       .success(function (Data) {
         if (Data.status == true) {
           $scope.show = true;
@@ -87,11 +118,8 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
   };
 
 
-
-
-
   (function Bank() {
-    $http.get(EndPoint + 'rte/get-user/'+profile.Id)
+    $http.get(EndPoint + 'rte/get-user/'+profile._id)
       .success(function (Data) {
         if (Data.status == true) {
           angular.forEach(Data.data.bank_accounts, function (bank) {
@@ -103,7 +131,7 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
         $scope.error = "Connection Error";
       });
 
-    $http.get(EndPoint + 'rte/get-user-transactions/'+profile.Id+'/0/20')
+    $http.get(EndPoint + 'rte/get-user-transactions/'+profile._id+'/0/20')
       .success(function (Data) {
         if (Data.status == true) {
           $scope.history = Data.data;
@@ -118,7 +146,7 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
 
   $scope.remove = function (number, index) {
     $scope.show = "";
-    $http.delete(EndPoint + 'rte/delete-user-bankaccount/'+profile.Id+'/'+number)
+    $http.delete(EndPoint + 'rte/delete-user-bankaccount/'+profile._id+'/'+number)
       .success(function (Data) {
         if (Data.status == true) {
           $scope.show = true;
@@ -156,7 +184,7 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
 
   $scope.addcard = function (payload) {
     var card = {};
-    card.user_id = profile.Id;
+    card.user_id = profile._id;
     card.card_type = detectCardType(payload.no);
     card.number = payload.no;
     card.issuer = "";
@@ -181,4 +209,40 @@ RSA.controller('Bank', function ($scope, $http, $timeout, $uibModal, toastr) {
         $scope.show = true;
       });
   }
-});
+})
+
+.controller('rte_signup', function ($scope, $http, $timeout, $uibModal, $uibModalInstance, toastr, profile, EndPoint) {
+  $scope.profile = profile;
+
+  $scope.cancel = function() {
+      $uibModalInstance.dismiss('cancel');
+  };
+
+  $scope.show = false;
+  $scope.create_account = function (data) {
+    var user = {};
+    user.user_id = profile._id;
+    user.username = data.first_name;
+    user.email = data.Email;
+    user.first_name = data.first_name;
+    user.last_name = data.last_name;
+    user.phone_number = data.Phone;
+    user.bvn  = data.bvn;
+    $http.post(EndPoint + 'rte/create-user/'+profile._id, user)
+      .success(function (Data) {
+        if (Data.status == true) {
+          $scope.show = true;
+          toastr.success(Data.message, 'Success!');
+          $scope.cancel();
+        } else {
+          toastr.error(Data.message, 'Error!');
+          $scope.show = false;
+        };
+      })
+      .error(function (data) {
+        toastr.error('Connection Error', 'Error!');
+        $scope.show = false;
+      });
+  }
+
+})

@@ -152,7 +152,7 @@
                                           <b>your account name is</b>
                                           <h3 ng-bind="account_name"></h3>
                                           <div ng-if = "!show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
-                                          <button ng-if="show" ng-click="confirm(account_number, banks.length - 1)" class="button button-primary">Comfirm</button> 
+                                          <button ng-if="show" ng-click="confirm(account_number, bank_code, banks.length - 1)" class="button button-primary">Comfirm</button> 
                                        </div>
                                     </div>
                                     <div id="card" class="tab-pane fade">
@@ -254,7 +254,7 @@
                                              <button ng-if="bank.is_deleted == false && show" ng-click = "remove(bank.number,$index)" type="button" class="button button-md button-danger button-block" >
                                              Remove
                                              </button>
-                                             <button ng-if="bank.is_deleted == true && show" ng-click = "confirm(bank.number, $index)" type="button" class="button button-md button-success button-block" >
+                                             <button ng-if="bank.is_deleted == true && show" ng-click = "confirm(bank.number, bank.bank_code, $index)" type="button" class="button button-md button-success button-block" >
                                              Comfirm
                                              </button>
                                           </td>

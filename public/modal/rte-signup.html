@@ -1,0 +1,42 @@
+<div class="auth-box-w wider pad-all">
+    <h4 class="text-center">Create a RTE Account <br>
+        <small class="text-muted">Configure one that's right for you</small>
+    </h4>
+    <form>
+        <div class="form-class">
+            <label for="username">Username</label>
+            <input id="username" class="form-con" placeholder="Enter Username" type="text" ng-model="profile.first_name">
+        </div>
+        <hr>
+        <hr />
+        <div class="form-class">
+            <label for="email">Email</label>
+            <input id="email" class="form-con" placeholder="Enter Email" type="email" ng-model="profile.Email">
+        </div>
+        <hr>
+        <div class="form-class">
+            <label for="firstname">Firstname</label>
+            <input id="firstname" class="form-con" placeholder="Enter Firstname" type="text" ng-model="profile.first_name">
+        </div>
+        <hr>
+        <div class="form-class">
+            <label for="lastname">Lastname</label>
+            <input id="lastname" class="form-con" placeholder="Enter Lastname" type="text" ng-model="profile.last_name">
+        </div>
+        <hr>
+        <div class="form-class">
+            <label for="telephone">Telephone</label>
+            <input id="telephone" class="form-con" placeholder="Enter Telephone" type="tel" ng-model="profile.Phone">
+        </div>
+        <hr>
+        <div class="form-class">
+            <label for="bvn">BVN</label>
+            <input id="bvn" class="form-con" placeholder="Enter BVN" type="number" ng-model="profile.bvn">
+        </div>
+        <hr>
+        <div class="buttons-w">
+            <div ng-if = "show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
+            <button ng-if = "!show" ng-click="create_account(profile)" class="button button-primary button-block">Create RTE Account</button>
+        </div>
+    </form>
+</div>

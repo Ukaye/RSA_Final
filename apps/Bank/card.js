@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
     functions = require('../../util/functions'),
+    User = require('../../database/models/user.js'),
     Bank = require('../../database/models/Bank.js'),
     Card = require('../../database/models/Card.js'),
     config = require('../../database/config/database.js'),
@@ -8,6 +9,15 @@ var express = require('express'),
     rte = new RTE (config.rte.Tenant_ID, config.rte.Key, config.rte.Token, config.rte.Base_Url);
 
 module.exports = function (app) {
+    app.get('/rte/get-account-status', function(req, res){
+        var user = req.user;
+        if (!user)
+            return res.json({status: false, message: "Required Parameter(s) not sent"});
+        if (user.rte_status == 1)
+            return res.json({status: true, message: "User RTE account has been setup"});
+        return res.json({status: false, message: "User RTE account not found"});
+    });
+
     app.get('/rte/get-all-banks', function(req, res){
         rte.Bank.getAllBanks(function(error, body){
             if (body.responseCode == 1)
@@ -32,14 +42,22 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/rte/create-user', function(req, res){
-        var user = req.body;
+    app.post('/rte/create-user/:user_id', function(req, res){
+        var user_id = req.params.user_id,
+            user = req.body;
+        user.user_id = user_id;
         if (!user)
             return res.json({status: false, message: "Required Parameter(s) not sent"});
         rte.User.create(user, function(error, body){
-            if (body.responseCode == 1)
-                return res.json({status: true, message: "User created successfully", data: body.payload});
-            return res.json({status: false, message: "An error occurred while creating user", error: body.responseText});
+            if (body.responseCode == 1){
+                User.update({email: user.email}, {$set:{rte_status:1}}, function(err, response){
+                    if (response.ok == 1)
+                        return res.json({status: true, message: "User created successfully", data: body.payload});
+                    return res.json({status: false, message: "An error occurred while creating user", error: err});
+                })
+            } else {
+                return res.json({status: false, message: "An error occurred while creating user", error: body.responseText});
+            }
         });
     });
 

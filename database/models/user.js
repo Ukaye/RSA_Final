@@ -14,7 +14,8 @@ var userSchema = new Schema({
     created_time  : String,
     bvn_status    : String,
     status        : {type:Number, default: 1},
-    access        : {type:Number, default:0}
+    access        : {type:Number, default: 0},
+    rte_status    : {type:Number, default: 0}
 });
 
 
