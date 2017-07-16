@@ -167,10 +167,10 @@
                                               <div  class="column-sm-6">
                                                  <select list="exp" class="quarter form-con" ng-model="Form.year">
                                                     <option selected>YY</option>
-                                                    <option value="2017">2017</option>
-                                                    <option value="2018">2018</option>
-                                                    <option value="2019">2019</option>
-                                                    <option value="2020">2020</option>
+                                                    <option value="17">2017</option>
+                                                    <option value="18">2018</option>
+                                                    <option value="19">2019</option>
+                                                    <option value="20">2020</option>
                                                  </select>
                                               </div>
                                               <div  class="column-sm-6">
@@ -218,10 +218,10 @@
                                     <thead>
                                        <tr>
                                           <th>
-                                             Account Name
+                                             Account Number
                                           </th>
                                           <th>
-                                             Account Number
+                                             Bank Code
                                           </th>
                                           <th>
                                              Bank Name
@@ -237,24 +237,24 @@
                                     <tbody ng-repeat="bank in banks">
                                        <tr>
                                           <td class="nowrap">
-                                             <span ng-bind ="bank.account_name"></span>
+                                             <p ng-bind="bank.number"></p>
                                           </td>
                                           <td class="nowrap">
-                                             <p ng-bind="bank.account_number"></p>
+                                             <span ng-bind ="bank.bank_code"></span>
                                           </td>
                                           <td>
                                              <b ng-bind="bank.bank_name"></b>
                                           </td>
                                           <td class="text-center">
-                                             <div ng-if="bank.status == 2"  class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
-                                             <div ng-if="bank.status == 1"  class="status-pill red" data-title="Complete" data-toggle="tooltip"></div>
+                                             <div ng-if="bank.is_deleted == false"  class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
+                                             <div ng-if="bank.is_deleted == true"  class="status-pill red" data-title="Complete" data-toggle="tooltip"></div>
                                           </td>
                                           <td class="text-center">
                                              <div ng-if = "!show" class="text-center"><img height="50px" width="50px" src="/img/ring.gif"> </div>
-                                             <button ng-if="bank.status == 2 && show" ng-click = "remove(bank.account_number,$index)" type="button" class="button button-md button-danger button-block" >
+                                             <button ng-if="bank.is_deleted == false && show" ng-click = "remove(bank.number,$index)" type="button" class="button button-md button-danger button-block" >
                                              Remove
                                              </button>
-                                             <button ng-if="bank.status == 1 && show" ng-click = "confirm(bank.account_number, $index)" type="button" class="button button-md button-danger button-block" >
+                                             <button ng-if="bank.is_deleted == true && show" ng-click = "confirm(bank.number, $index)" type="button" class="button button-md button-success button-block" >
                                              Comfirm
                                              </button>
                                           </td>
@@ -275,34 +275,38 @@
                                  <table class="table table-lightborder">
                                     <thead>
                                        <tr>
-                                          <th>
-                                             Bank
-                                          </th>
-                                          <th>
-                                             Event
-                                          </th>
-                                          <th>
-                                             Type
-                                          </th>
-                                          <th>
-                                             Date
-                                          </th>
+                                          <th>Id</th>
+                                          <th>Amount</th>
+                                          <th>Channel Used</th>
+                                          <th>Processed With</th>
+                                          <th>Status</th>
+                                          <th>Type</th>
+                                          <th>Date</th>
                                        </tr>
                                     </thead>
                                     <tbody ng-repeat = "transaction in history">
                                        <tr>
                                           <td>
-                                             <b ng-bind="transaction.bank_name"></b>
+                                             <b ng-bind="transaction.transaction_id"></b>
                                           </td>
                                           <td>
-                                             <b ng-bind="transaction.transaction"></b>
+                                             <b ng-bind="transaction.amount"></b>
+                                          </td>
+                                            <td>
+                                             <b ng-bind="transaction.channel_used"></b>
+                                          </td>
+                                            <td>
+                                             <b ng-bind="transaction.processed_with"></b>
+                                          </td>
+                                            <td>
+                                             <b ng-bind="transaction.transaction_status"></b>
                                           </td>
                                           <td >
-                                             <div ng-if= "transaction.type == 1" class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
-                                             <div ng-if= "transaction.type == 2" class="status-pill red" data-title="Complete" data-toggle="tooltip"></div>
+                                             <div ng-if= "transaction.type == 'credit'" class="status-pill green" data-title="Complete" data-toggle="tooltip"></div>
+                                             <div ng-if= "transaction.type == 'debit'" class="status-pill red" data-title="Complete" data-toggle="tooltip"></div>
                                           </td>
                                           <td>
-                                             <b ng-bind="transaction.created_time"></b> 
+                                             <b ng-bind="transaction.created_at | date:'dd/mm/yyyy'"></b> 
                                           </td>
                                        </tr>
                                     </tbody>

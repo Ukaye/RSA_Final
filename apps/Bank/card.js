@@ -27,8 +27,8 @@ module.exports = function (app) {
             return res.json({status: false, message: "Required Parameter(s) not sent"});
         rte.Bank.resolveBankAccount(options, function(error, body){
             if (body.responseCode == 1)
-                return res.json({status: true, message: "Bank fetched successfully", data: body.payload});
-            return res.json({status: false, message: "An error occurred while fetching bank", error: body.responseText});
+                return res.json({status: true, message: "Bank verified successfully", data: body.payload});
+            return res.json({status: false, message: "An error occurred while verifying bank", error: body.responseText});
         });
     });
 
@@ -173,11 +173,13 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/rte/get-user-transactions/:user_id', function(req, res){
+    app.get('/rte/get-user-transactions/:user_id/:skip?/:limit?', function(req, res){
         var user_id = req.params.user_id,
+            skip = (req.params.skip == undefined) ? 0 : parseInt(req.params.skip),
+            limit = (req.params.limit == undefined) ? 20 : parseInt(req.params.limit),
             options = {
-                skip : 0,
-                limit : 20,
+                skip : skip,
+                limit : limit,
                 user_id : user_id
             };
         if (!user_id)

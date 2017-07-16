@@ -14,6 +14,7 @@ RSA.controller('Auth', function ($scope, $http, $timeout, toastr) {
         if (Data.status == true) {
 
           window.localStorage.setItem("user", Data.data.Phone);
+          localStorage.profile = JSON.stringify(Data.data);
 
           toastr.success('redirecting...', 'Success!');
 
